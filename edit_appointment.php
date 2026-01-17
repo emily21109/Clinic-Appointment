@@ -9,7 +9,6 @@ if (!isset($_SESSION["username"])) {
 
 $id = $_GET["id"];
 
-// fetch appointment
 $stmt = $conn->prepare("SELECT * FROM appointments WHERE id=?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -92,3 +91,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
