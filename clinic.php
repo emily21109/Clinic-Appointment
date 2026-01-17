@@ -9,14 +9,12 @@ if (!isset($_SESSION["username"])) {
 
 $username = $_SESSION["username"];
 
-// get user_id
 $stmt = $conn->prepare("SELECT id FROM users WHERE username=?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 $user_id = $user["id"];
 
-// get appointments
 $stmt = $conn->prepare("SELECT * FROM appointments WHERE user_id=?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -121,3 +119,4 @@ $result = $stmt->get_result();
 
 </body>
 </html>
+
